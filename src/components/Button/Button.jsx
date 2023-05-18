@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ButtonStyle = styled.button`
   background-color: ${(props) => props.backgroundColor};
@@ -25,17 +26,21 @@ const Button = ({
   fontSize,
   padding,
   texto,
+  url,
 }) => {
+  console.log(url);
   return (
-    <ButtonStyle
-      backgroundColor={backgroundColor}
-      color={color}
-      colorBorde={colorBorde}
-      fontSize={fontSize}
-      padding={padding}
-    >
-      {texto}
-    </ButtonStyle>
+    <Link to={url}>
+      <ButtonStyle
+        backgroundColor={backgroundColor}
+        color={color}
+        colorBorde={colorBorde}
+        fontSize={fontSize}
+        padding={padding}
+      >
+        {texto}
+      </ButtonStyle>
+    </Link>
   );
 };
 
@@ -46,6 +51,7 @@ Button.propTypes = {
   fontSize: PropTypes.string.isRequired,
   texto: PropTypes.string.isRequired,
   padding: PropTypes.string.isRequired,
+  url: PropTypes.string,
 };
 
 export default Button;

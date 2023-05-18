@@ -10,11 +10,20 @@ const TitleCategoryStyle = styled.h2`
   font-weight: 400;
   white-space: nowrap;
   width: fit-content;
-
   ${props => props.showcase && css`
     margin-bottom: 2rem;
   `}
 
+  @media screen and (max-width: 992px) {
+    ${props => props.showcase && css`
+    font-size: var(--font-size-titleMedium);
+  `}
+  }
+  @media screen and (max-width: 768px) {
+    ${props => props.showcase && css`
+    font-size: var(--font-size-titleSmall);
+  `}
+  }
 `;
 
 const TitleCategory = ({ texto, backgroundColor, fontSize, showcase }) => {

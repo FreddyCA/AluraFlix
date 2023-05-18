@@ -11,6 +11,7 @@ const FeaturedStyled = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow: hidden;
 `;
 
 const FeaturedButtons = styled.div`

@@ -23,6 +23,7 @@ const NavBar = () => {
         fontSize="1.312rem"
         texto="Nuevo Video"
         padding="14px 28px"
+        url="/addvideo"
       ></Button>
     </NavBarStyle>
   );

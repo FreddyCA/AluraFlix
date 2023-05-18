@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
         --font-size-bodyBig: 1.688rem;
         --font-size-bodyMedium: 1.125rem;
         --font-size-bodySmall: 1rem;
-        --font-size-bodySmaller: 0.75rem;
+        --font-size-bodySmaller: 0.875rem;
     }
 
     *,

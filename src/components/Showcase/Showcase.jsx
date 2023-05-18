@@ -13,11 +13,20 @@ const ShowcaseStyle = styled.div`
   height: 550px;
   background-image: url(${bgShowcase});
   background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover, contain;
   margin: 0 auto;
   padding: 50px 2rem;
   display: flex;
   justify-content: space-between;
   align-items: end;
+  gap: 20px;
+  
+
+  @media screen and (max-width: 992px) {
+    height: 475px;
+  }
+  
 `;
 
 const ShowcaseInfoStyle = styled.div`
@@ -39,9 +48,9 @@ const Showcase = ({dataFront}) => {
             showcase
           ></TitleCategory>
 
-          <TitleVideo titulo="Challenge React"></TitleVideo>
+          <TitleVideo titulo="Challenge React" showcase></TitleVideo>
 
-          <DescriptionVideo descripcion="Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React."></DescriptionVideo>
+          <DescriptionVideo descripcion="Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React." showcase></DescriptionVideo>
         </ShowcaseInfoStyle>
         <VideoCard
           width="418.68px"
@@ -49,6 +58,7 @@ const Showcase = ({dataFront}) => {
           borderColor="yellow"
           bgImagen="https://i.ytimg.com/vi/AG2QssLpQzI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAbUU2Mf8CAJ3sB0P3Lf5XVkbyYMQ"
           linkVideo="https://www.youtube.com/watch?v=RwRBaXYJioM&list=RDGMEM2VCIgaiSqOfVzBAjPJm-agVMQpuOyCqocV8&index=3"
+          showcase
         ></VideoCard>
       </ShowcaseStyle>
       <Carousel dataFront={dataFront}></Carousel>
