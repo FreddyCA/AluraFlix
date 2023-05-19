@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './pages/Home'
 import AddVideo from "./pages/AddVideo";
 import NewCat from "./pages/NewCat";
+import NavBar from "./components/NavBar/NavBar"
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dataFront = {
@@ -84,6 +86,7 @@ function App() {
     <BrowserRouter>
     
       <GlobalStyle />
+      <NavBar />
       <Routes>
         <Route path="/" 
         element={<Home dataFront={dataFront} />} />
@@ -96,6 +99,7 @@ function App() {
           element={<NewCat />}
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

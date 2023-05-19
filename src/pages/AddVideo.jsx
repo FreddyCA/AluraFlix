@@ -1,22 +1,22 @@
 import styled from "styled-components";
 import Button from "../components/Button/Button";
+import TitleVideo from "../components/TitleVideo/TitleVideo";
+import Form from "../components/Form/Form";
 
 const AddVideoStyle = styled.div`
-  background-color: tomato;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 50px 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
 `;
 
 const AddVideo = () => {
   return (
     <AddVideoStyle>
-      <Button
-        backgroundColor="black"
-        color="white"
-        fontSize="20px"
-        padding="15px 35px"
-        texto="New Video"
-        colorBorde="yellow"
-      ></Button>
-
+      <TitleVideo titulo="Nuevo Video"></TitleVideo>
       <Button
         backgroundColor="yellow"
         color="black"
@@ -26,6 +26,7 @@ const AddVideo = () => {
         colorBorde="blue"
         url="/"
       ></Button>
+      <Form></Form>
     </AddVideoStyle>
   );
 };

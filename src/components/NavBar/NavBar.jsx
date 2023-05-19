@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
+import LineaHorizontal from "../LineaHorizontal/LineaHorizontal";
 
 const NavBarStyle = styled.div`
   max-width: 1024px;
@@ -14,7 +15,8 @@ const NavBarStyle = styled.div`
 
 const NavBar = () => {
   return (
-    <NavBarStyle>
+    <>
+   <NavBarStyle>
       <Logo width="168px" height="40px"></Logo>
       <Button
         backgroundColor="var(--color-black)"
@@ -26,6 +28,9 @@ const NavBar = () => {
         url="/addvideo"
       ></Button>
     </NavBarStyle>
+    <LineaHorizontal />
+    </>
+   
   );
 };
 
