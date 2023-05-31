@@ -27,14 +27,14 @@ const Featured = ({ data }) => {
     <FeaturedStyled>
       <FeaturedButtons>
         <TitleCategory
-          texto="Back End"
-          backgroundColor="var(--color-primario)"
+          texto={data.label}
+          backgroundColor={data.color}
           fontSize="var(--font-size-titleSmall)"
         ></TitleCategory>
         <ButtonOpenAll></ButtonOpenAll>
       </FeaturedButtons>
 
-      <Carousel dataFront={data}></Carousel>
+      <Carousel data={data}></Carousel>
     </FeaturedStyled>
   );
 };

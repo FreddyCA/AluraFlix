@@ -14,7 +14,8 @@ const CarouselStyle = styled.div`
   display: flex;
   animation: scroll 20s linear infinite;
   gap: 20px;
-  width: calc(295px * ${(props) => props.cantidad});
+  width: calc(295px * ${(props) => props.cantidad} );
+  background-color: yellow;
 
   @keyframes scroll {
     0% {
@@ -30,17 +31,22 @@ const CarouselStyle = styled.div`
   }
 `;
 
-const Carousel = ({ dataFront }) => {
-  const cantidadObjects = Object.keys(dataFront).length;
+// ESTA TOMANDO COMO PARAMETRO AL ULTIMO CARRUSEL, 
+// SEPARAR CADA CARRUSEL A OTRO DIV
 
-  const videoCards = Object.keys(dataFront).map((key) => {
-    const dataVideo = dataFront[key];
+const Carousel = ({ data }) => {
+  const dataVideos = data.videos
+  const cantidadObjects = Object.keys(dataVideos).length;
+  console.log(cantidadObjects)
+
+  const videoCards = Object.keys(dataVideos).map((key) => {
+    const dataVideo = dataVideos[key];
     return (
       <VideoCard
         key={dataVideo.id}
         width="295px"
         height="168px"
-        borderColor="blue"
+        borderColor={data.color}
         bgImagen={dataVideo.linkImagen}
         linkVideo={dataVideo.linkVideo}
       ></VideoCard>
@@ -59,7 +65,7 @@ const Carousel = ({ dataFront }) => {
 
 
 Carousel.propTypes = {
-  dataFront: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default Carousel;

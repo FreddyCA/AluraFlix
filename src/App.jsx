@@ -5,6 +5,8 @@ import AddVideo from "./pages/AddVideo";
 import NewCat from "./pages/NewCat";
 import NavBar from "./components/NavBar/NavBar"
 import Footer from "./components/Footer/Footer";
+import dataFull from "./data"
+import { useState } from "react";
 
 function App() {
   const dataFront = {
@@ -82,6 +84,18 @@ function App() {
     },
   };
 
+  const [data, setData] = useState(dataFull)
+
+
+  const categorias = Object.keys(dataFull).reduce((categoria, key) => {
+   categoria[key] = {
+    value: dataFull[key].value,
+    label: dataFull[key].label
+   }
+   return categoria
+  }, {});
+  console.log(categorias)
+
   return (
     <BrowserRouter>
     
@@ -89,10 +103,10 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" 
-        element={<Home dataFront={dataFront} />} />
+        element={<Home dataFront={dataFront} data={data} />} />
         <Route
           path="/addvideo"
-          element={<AddVideo />}
+          element={<AddVideo categorias={categorias}/>}
         />
         <Route
           path="/newcat"

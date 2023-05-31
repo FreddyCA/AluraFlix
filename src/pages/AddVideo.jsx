@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import Button from "../components/Button/Button";
 import TitleVideo from "../components/TitleVideo/TitleVideo";
 import Form from "../components/Form/Form";
@@ -13,7 +14,8 @@ const AddVideoStyle = styled.div`
   gap: 4rem;
 `;
 
-const AddVideo = () => {
+const AddVideo = ({categorias}) => {
+  console.log(categorias)
   return (
     <AddVideoStyle>
       <TitleVideo titulo="Nuevo Video"></TitleVideo>
@@ -26,9 +28,14 @@ const AddVideo = () => {
         colorBorde="blue"
         url="/"
       ></Button>
-      <Form></Form>
+      <Form categorias={categorias}></Form>
     </AddVideoStyle>
   );
 };
+
+AddVideo.propTypes = {
+  categorias: PropTypes.object.isRequired,
+};
+
 
 export default AddVideo;

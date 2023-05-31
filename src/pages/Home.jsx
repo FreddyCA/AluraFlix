@@ -6,18 +6,25 @@ import Featured from "../components/Featured/Featured";
 const HomeStyle = styled.div`
 `;
 
-const Home = ({ dataFront }) => {
+const Home = ({ dataFront, data }) => {
+
   return (
     <HomeStyle>
       <Showcase dataFront={dataFront}></Showcase>
-      <Featured data={dataFront}></Featured>
-      <Featured data={dataFront}></Featured>
+      {
+         Object.entries(data).map(([key]) => (
+          <Featured key={key} data={data[key]}></Featured>
+         ))
+      }
+      {/* <Featured data={dataFront} ></Featured>
+      <Featured data={dataFront} ></Featured> */}
     </HomeStyle>
   );
 };
 
 Home.propTypes = {
   dataFront: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default Home

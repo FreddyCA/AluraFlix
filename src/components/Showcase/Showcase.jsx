@@ -61,7 +61,7 @@ const Showcase = ({dataFront}) => {
           showcase
         ></VideoCard>
       </ShowcaseStyle>
-      <Carousel dataFront={dataFront}></Carousel>
+      {/* <Carousel dataFront={dataFront}></Carousel> */}
     </>
   );
 };
