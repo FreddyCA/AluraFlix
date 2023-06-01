@@ -34,7 +34,7 @@ const Featured = ({ data }) => {
         <ButtonOpenAll></ButtonOpenAll>
       </FeaturedButtons>
 
-      <Carousel data={data}></Carousel>
+      <Carousel data={data} body></Carousel>
     </FeaturedStyled>
   );
 };

@@ -22,11 +22,6 @@ const ShowcaseStyle = styled.div`
   align-items: end;
   gap: 20px;
   
-
-  @media screen and (max-width: 992px) {
-    height: 475px;
-  }
-  
 `;
 
 const ShowcaseInfoStyle = styled.div`
@@ -36,39 +31,51 @@ const ShowcaseInfoStyle = styled.div`
   gap: 10px;
 `;
 
-const Showcase = ({dataFront}) => {
+const Showcase = ({ data}) => {
+  const videoShowcase = Object.values(data.videos)[0]
+
+  const dataNew= {...data}
+  const dataNewKeys = Object.keys(dataNew.videos)
+  console.log(dataNewKeys)
+  const newObjVideos = dataNewKeys.slice(1).reduce((obj, key) => {
+    obj[key] = dataNew.videos[key]
+    return obj
+  }, {})
+  dataNew.videos = newObjVideos
+
+
   return (
     <>
       <ShowcaseStyle>
         <ShowcaseInfoStyle>
           <TitleCategory
-            texto="Front End"
-            backgroundColor="var(--color-primario)"
+            texto={data.label}
+            backgroundColor={data.color}
             fontSize="var(--font-size-titleBig)"
             showcase
           ></TitleCategory>
 
-          <TitleVideo titulo="Challenge React" showcase></TitleVideo>
+          <TitleVideo titulo={videoShowcase.titulo} showcase></TitleVideo>
 
-          <DescriptionVideo descripcion="Este challenge es una forma de aprendizaje. Es un mecanismo donde podrás comprometerte en la resolución de un problema para poder aplicar todos los conocimientos adquiridos en la formación React." showcase></DescriptionVideo>
+          <DescriptionVideo descripcion={videoShowcase.descripcion} showcase></DescriptionVideo>
         </ShowcaseInfoStyle>
         <VideoCard
           width="418.68px"
           height="235px"
-          borderColor="yellow"
-          bgImagen="https://i.ytimg.com/vi/AG2QssLpQzI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAbUU2Mf8CAJ3sB0P3Lf5XVkbyYMQ"
-          linkVideo="https://www.youtube.com/watch?v=RwRBaXYJioM&list=RDGMEM2VCIgaiSqOfVzBAjPJm-agVMQpuOyCqocV8&index=3"
+          borderColor={data.color}
+          bgImagen={videoShowcase.linkImagen}
+          linkVideo={videoShowcase.linkVideo}
           showcase
         ></VideoCard>
       </ShowcaseStyle>
-      {/* <Carousel dataFront={dataFront}></Carousel> */}
+      <Carousel data={dataNew}></Carousel>
     </>
   );
 };
 
 
 Showcase.propTypes = {
-  dataFront: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 };
 
 export default Showcase;

@@ -1,23 +1,34 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
 import PropTypes from "prop-types";
 
 import VideoCard from "../VideoCard/VideCard";
 
 const CarouselContainerStyle = styled.div`
   max-width: 1024px;
-  margin: 0 auto;
   height: auto;
   overflow: hidden;
+  margin: 0 auto;
+
+  ${props => props.body && css`
+    padding: 0 2rem;
+    margin: 0;
+  `}
 `;
 
 const CarouselStyle = styled.div`
   display: flex;
-  animation: scroll 20s linear infinite;
   gap: 20px;
-  width: calc(295px * ${(props) => props.cantidad} );
-  background-color: yellow;
 
-  @keyframes scroll {
+  ${(props) =>
+    props.cantidad > 3 &&
+    css`
+      width: calc(295px * ${(props) => props.cantidad});
+      animation: scroll-${(props) => props.cantidad} ${(props) =>
+          `calc(2.5s * ${props.cantidad})`} linear infinite;
+    `}
+
+  @keyframes scroll-${(props) => props.cantidad} {
     0% {
       transform: translateX(0);
     }
@@ -31,13 +42,10 @@ const CarouselStyle = styled.div`
   }
 `;
 
-// ESTA TOMANDO COMO PARAMETRO AL ULTIMO CARRUSEL, 
-// SEPARAR CADA CARRUSEL A OTRO DIV
-
-const Carousel = ({ data }) => {
-  const dataVideos = data.videos
+const Carousel = ({ data, body }) => {
+  const dataVideos = data.videos;
   const cantidadObjects = Object.keys(dataVideos).length;
-  console.log(cantidadObjects)
+  console.log(cantidadObjects);
 
   const videoCards = Object.keys(dataVideos).map((key) => {
     const dataVideo = dataVideos[key];
@@ -54,18 +62,18 @@ const Carousel = ({ data }) => {
   });
 
   return (
-    <CarouselContainerStyle>
+    <CarouselContainerStyle body={body}>
       <CarouselStyle cantidad={cantidadObjects}>
-      {videoCards}
-      {videoCards}
+        {videoCards}
+        {cantidadObjects > 3 && videoCards}
       </CarouselStyle>
     </CarouselContainerStyle>
   );
 };
 
-
 Carousel.propTypes = {
   data: PropTypes.object.isRequired,
+  body: PropTypes.bool
 };
 
 export default Carousel;
